@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Modulo con Nome, Cognome ed Età</title>
+  <script>
+    // Funzione per inviare i dati a Thunkable
+    function sendFormDataToThunkable() {
+      var nome = document.getElementById("nome").value;       // Prende il valore del campo Nome
+      var cognome = document.getElementById("cognome").value; // Prende il valore del campo Cognome
+      var eta = document.getElementById("eta").value;         // Prende il valore del campo Età
+
+      // Crea un oggetto JSON con i dati
+      var formData = {
+        "Nome": nome,
+        "Cognome": cognome,
+        "Età": eta
+      };
+
+      // Invia i dati a Thunkable come stringa JSON
+      window.ReactNativeWebView.postMessage(JSON.stringify(formData));
+    }
+  </script>
+</head>
+<body>
+  <h1>Inserisci i tuoi dati</h1>
+
+  <!-- Form con campi Nome, Cognome ed Età -->
+  <form onsubmit="sendFormDataToThunkable(); return false;">
+    <label for="nome">Nome:</label><br>
+    <input type="text" id="nome" name="nome" required><br><br>
+
+    <label for="cognome">Cognome:</label><br>
+    <input type="text" id="cognome" name="cognome" required><br><br>
+
+    <label for="eta">Età:</label><br>
+    <input type="number" id="eta" name="eta" required><br><br>
+
+    <input type="submit" value="Invia dati a Thunkable">
+  </form>
+</body>
+</html>
+
